@@ -1,5 +1,4 @@
 ---
-title: "LA-Education"
 author: "Ryan"
 execute:
     echo: FALSE
@@ -18,6 +17,7 @@ library(viridis)
 library(leaflet)
 library(dplyr)
 library(sf)
+
 ```
 ```{r}
 
