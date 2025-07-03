@@ -7,7 +7,7 @@ execute:
     warning: FALSE
 ---
 
-This interactive map displays the total population by census tract in Los Angeles County, based on data from the 2020 American Community Survey (ACS). Each tract is shaded in varying intensities of blue, where darker shades represent areas with higher population counts. Hovering over a tract reveals its unique GEOID and population estimate. This visualization helps highlight population density patterns across the county, providing insight into how people are distributed geographically. The use of tidycensus and leaflet enables a powerful combination of demographic data access and web-based mapping.
+This interactive map displays the **total population** by **census tract** in **Los Angeles County**, based on data from the **2020 American Community Survey (ACS)**. Each tract is shaded in varying intensities of **blue**, where **darker shades** represent areas with **higher population counts**. Hovering over a tract reveals its unique **GEOID** and **population estimate**. This visualization helps highlight **population density patterns** across the county, providing insight into how people are distributed **geographically**. The use of **tidycensus** and **leaflet** enables a powerful combination of **demographic data access** and **web-based mapping**.
 
 
 ```{r}
