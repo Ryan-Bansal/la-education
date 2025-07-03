@@ -1,0 +1,13 @@
+---
+title: "LA-education"
+author: "Ryan"
+execute:
+    echo: FALSE
+    message: FALSE
+    warning: FALSE
+---
+
+
+```{r}
+
+```
