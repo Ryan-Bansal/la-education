@@ -9,5 +9,78 @@ execute:
 
 
 ```{r}
+library(tidycensus)
+library(tidyr)
+library(primer.data)
+library(viridis)
+library(leaflet)
+library(dplyr)
+library(sf)
+```
+```{r}
+
+la_tracts <- get_acs(
+  geography = "tract",
+  variables = "B01003_001",  # Total population
+  state = "CA",
+  county = "Los Angeles",
+  year = 2020,
+  geometry = TRUE,
+  progress_bar = FALSE
+)
+```
+
+
+```{r}
+library(tidycensus)
+
+# You already have this:
+# la_tracts <- get_acs(...)
+
+# Step 1: Prepare a color palette
+pal <- colorNumeric(
+  palette = "Blues",
+  domain = la_tracts$estimate,
+  na.color = "transparent"
+)
+
+# Step 2: Create informative labels
+labels <- sprintf(
+  "<strong>Tract:</strong> %s<br/><strong>Population:</strong> %s",
+  la_tracts$GEOID,
+  formatC(la_tracts$estimate, format = "d", big.mark = ",")
+) %>% lapply(htmltools::HTML)
+
+# Step 3: Build the leaflet map
+leaflet(data = la_tracts) %>%
+  addProviderTiles("CartoDB.Positron") %>%  # Clean, modern basemap
+  addPolygons(
+    fillColor = ~pal(estimate),
+    weight = 0.3,
+    opacity = 1,
+    color = "white",
+    dashArray = "3",
+    fillOpacity = 0.7,
+    highlightOptions = highlightOptions(
+      weight = 1.5,
+      color = "#666",
+      dashArray = "",
+      fillOpacity = 0.7,
+      bringToFront = TRUE
+    ),
+    label = labels,
+    labelOptions = labelOptions(
+      style = list("font-weight" = "normal", padding = "3px 8px"),
+      textsize = "13px",
+      direction = "auto"
+    )
+  ) %>%
+  addLegend(
+    pal = pal,
+    values = ~estimate,
+    opacity = 0.7,
+    title = "Total Population",
+    position = "bottomright"
+  )
 
 ```
