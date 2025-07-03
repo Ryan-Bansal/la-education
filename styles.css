@@ -1,1 +1,23 @@
-/* css styles */
+/* styles.css */
+body {
+  background-color: #d2b48c;  /* tan color */
+  color: #222222;             /* dark text */
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.navbar, .sidebar {
+  background-color: #c8ad7f;  /* slightly darker tan for navbar/sidebar */
+}
+
+a {
+  color: #5c3d00;             /* dark brown links */
+}
+
+a:hover {
+  color: #000000;             /* black on hover */
+}
+
+/* Optional: style code blocks background */
+pre, code {
+  background-color: #f5f0e6;
+}
